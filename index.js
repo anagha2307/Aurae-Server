@@ -3,10 +3,12 @@ require('./config/db')
 
 const express = require('express')
 const cors = require('cors')
+const routes = require('./routing/routes')
 
 const auraeServer = express()
 auraeServer.use(cors())
 auraeServer.use(express.json())
+auraeServer.use(routes)
 
 const Port = 3000
 auraeServer.listen(Port, () => {
