@@ -33,11 +33,12 @@ exports.loginController = async (req,res) => {
     try{
         const existingUser = await users.findOne({email})
         if(existingUser){
-            let userLoggedIn = existingUser.role == "user" ? await bcrypt.compare(password,
-                existingUser.password) : password == existingUser.password
+            let userLoggedIn = await bcrypt.compare(password, existingUser.password)
             if(userLoggedIn){
                 const token = jwt.sign({email,role: existingUser.role, userId: existingUser._id},process.env.JWTSECRET)
                 res.status(200).json({user:existingUser,token})
+                
+                
             }else{
                 res.status(401).json("Invalid Password")
             }
