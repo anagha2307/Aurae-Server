@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken')
 //register
 exports.registerController = async (req,res) => {
     console.log('Inside registerController');
-    const {username,email,password} = req.body
+    const {username,email,password,role} = req.body
     //console.log("Body recieved",req.body)
     try{
         const existingUser = await users.findOne({email})
@@ -15,7 +15,7 @@ exports.registerController = async (req,res) => {
         else{
             const encrptPassword = await bcrypt.hash(password,10)
             const newUser = new users({
-                username,email,password:encrptPassword
+                username,email,password:encrptPassword,role
             })
             await newUser.save()
             res.status(200).json(newUser);
