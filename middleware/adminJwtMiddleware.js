@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken')
 const adminJwtMiddleware = (req,res,next) => {
-    const token = req.headers['authorization'].split("")[1]
+    console.log("Inside adminJwtMiddleware");
+    const token = req.headers['authorization'].split(" ")[1]
     if(token){
         try{
             const jwtResponse = jwt.verify(token, process.env.JWTSECRET)
