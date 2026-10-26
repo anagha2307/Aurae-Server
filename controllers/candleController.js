@@ -21,7 +21,6 @@ exports.addCandleController = async (req,res) => {
         res.status(500).json(err)
     }
 }
-
 //get all candles 
 exports.getAllCandlesController = async (req,res) => {
     console.log("Inside getAllCandlesController");
@@ -33,7 +32,6 @@ exports.getAllCandlesController = async (req,res) => {
         res.status(500).json(err)
     }
 }
-
 //view single candle 
 exports.viewCandleController = async (req,res) => {
     console.log("Inside viewCandleController");
