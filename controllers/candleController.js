@@ -34,4 +34,19 @@ exports.getAllCandlesController = async (req,res) => {
     }
 }
 
-
+//view single candle 
+exports.viewCandleController = async (req,res) => {
+    console.log("Inside viewCandleController");
+    const {id} = req.params
+    try{
+        const viewCandle = await candles.findById(id)
+        if(!viewCandle){
+            res.status(404).json("Candle not found.....!!!")
+        }
+        res.status(200).json(viewCandle)
+    }
+    catch(err){
+        console.log(err);
+        res.status(500).json(err)
+    }
+}

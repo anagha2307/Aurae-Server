@@ -12,6 +12,8 @@ routes.post('/login',userController.loginController)
 routes.post('/addCandle',adminJwtMiddleware,candleController.addCandleController)
 //get all canndle list
 routes.get('/candles',candleController.getAllCandlesController)
+//view single candle
+routes.get('/candles/:id/view',candleController.viewCandleController)
 
 
 module.exports = routes
