@@ -10,6 +10,8 @@ routes.post('/register',userController.registerController)
 routes.post('/login',userController.loginController)
 //add candle - admin
 routes.post('/addCandle',adminJwtMiddleware,candleController.addCandleController)
+//get all canndle list
+routes.get('/candles',candleController.getAllCandlesController)
 
 
 module.exports = routes

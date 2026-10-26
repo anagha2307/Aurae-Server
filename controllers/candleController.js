@@ -21,3 +21,17 @@ exports.addCandleController = async (req,res) => {
         res.status(500).json(err)
     }
 }
+
+//get all candles 
+exports.getAllCandlesController = async (req,res) => {
+    console.log("Inside getAllCandlesController");
+    try{
+        const allCandles = await candles.find()
+        res.status(200).json(allCandles)
+    }
+    catch(err){
+        res.status(500).json(err)
+    }
+}
+
+
