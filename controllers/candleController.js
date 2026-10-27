@@ -48,3 +48,16 @@ exports.viewCandleController = async (req,res) => {
         res.status(500).json(err)
     }
 }
+//delete candle
+exports.removeCandleController = async (req,res) => {
+    console.log("Inside removeCandleController");
+    const {id} = req.params
+    try{
+        const removeCandle = await candles.findByIdAndDelete({_id:id})
+        res.status(200).json(removeCandle)
+    }
+    catch(err){
+        console.log(err);
+        res.status(500).json(err)
+    }
+}

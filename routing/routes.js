@@ -2,6 +2,7 @@ const express = require('express')
 const routes = express.Router()
 const userController = require('../controllers/userController')
 const candleController = require('../controllers/candleController')
+const jwtMiddleware = require('../middleware/jwtMiddleware')
 const adminJwtMiddleware = require('../middleware/adminJwtMiddleware')
 
 //register User
@@ -13,7 +14,9 @@ routes.post('/addCandle',adminJwtMiddleware,candleController.addCandleController
 //get all canndle list
 routes.get('/candles',candleController.getAllCandlesController)
 //view single candle
-routes.get('/candles/:id/view',candleController.viewCandleController)
+routes.get('/candles/:id/view',jwtMiddleware,candleController.viewCandleController)
+//delete candle 
+routes.delete('/candles/:id/delete',adminJwtMiddleware,candleController.removeCandleController)
 
 
 module.exports = routes
