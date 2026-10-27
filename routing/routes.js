@@ -5,9 +5,9 @@ const candleController = require('../controllers/candleController')
 const jwtMiddleware = require('../middleware/jwtMiddleware')
 const adminJwtMiddleware = require('../middleware/adminJwtMiddleware')
 
-//register User
+//register user
 routes.post('/register',userController.registerController)
-//login User
+//login user
 routes.post('/login',userController.loginController)
 //add candle - admin
 routes.post('/addCandle',adminJwtMiddleware,candleController.addCandleController)
@@ -19,7 +19,6 @@ routes.get('/candles/:id/view',jwtMiddleware,candleController.viewCandleControll
 routes.delete('/candles/:id/delete',adminJwtMiddleware,candleController.removeCandleController)
 //edit candle
 routes.put('/candles/:id/edit',adminJwtMiddleware,candleController.editCandleController)
-
 
 
 module.exports = routes
