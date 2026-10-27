@@ -61,3 +61,20 @@ exports.removeCandleController = async (req,res) => {
         res.status(500).json(err)
     }
 }
+//edit candle details
+exports.editCandleController = async (req,res) => {
+    console.log("Inside editCandleController");
+    const {candleName,candlePrice,scent,shelfLife,images,burnTime,weight,reviews,features,
+        description,rating,stock} = req.body
+    const {id} = req.params
+    try{
+        const editCandle = await candles.findByIdAndUpdate({_id:id},{candleName,candlePrice,scent,shelfLife,images,burnTime,weight,reviews,features,
+        description,rating,stock},{new:true})
+        await editCandle.save()
+        res.status(200).json(editCandle)
+    }
+    catch(err){
+        console.log(err);
+        res.status(500).json(err)
+    }
+}

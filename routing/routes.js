@@ -17,6 +17,9 @@ routes.get('/candles',candleController.getAllCandlesController)
 routes.get('/candles/:id/view',jwtMiddleware,candleController.viewCandleController)
 //delete candle 
 routes.delete('/candles/:id/delete',adminJwtMiddleware,candleController.removeCandleController)
+//edit candle
+routes.put('/candles/:id/edit',adminJwtMiddleware,candleController.editCandleController)
+
 
 
 module.exports = routes
